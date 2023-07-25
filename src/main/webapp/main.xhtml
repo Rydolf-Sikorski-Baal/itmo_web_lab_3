@@ -14,10 +14,13 @@
 <h:body>
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
+            <!-- validation script -->
+            <h:outputScript name="js/validation.js" target="head"/>
+
             <div id="main">
                 <h:form>
                     <div id = "divX">
-                        <h:inputText value="#{AreaLogic.x}" required="true"/>
+                        <h:inputText value="#{AreaLogic.x}" onblur="validateNumber(this)" required="true"/>
                     </div>
 
                     <div id = "divY">
