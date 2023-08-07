@@ -5,9 +5,6 @@ import lombok.Setter;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import java.io.Serializable;
 
 @Named("AreaLogic")
@@ -30,16 +27,5 @@ public class AreaLogicBean implements Serializable {
 
         result = "Submitted values: " + x + ", " + y + ", " + r;
         System.out.println(result);
-
-        try {
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("oracleDB");
-            EntityManager manager = factory.createEntityManager();
-            manager.getTransaction().begin();
-            manager.persist(entry);
-            manager.getTransaction().commit();
-            System.out.println("data saved");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }
